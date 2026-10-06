@@ -1,0 +1,110 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #eef1f4;
+  color: #222;
+  line-height: 1.5;
+}
+
+header {
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+header h1 { margin: 0; }
+header p { margin: 0.25rem 0 0; opacity: 0.85; }
+
+main {
+  max-width: 700px;
+  margin: 1rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+section h2 { margin-top: 0; }
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  color: #555;
+}
+footer p { margin: 0; }
+
+#note-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+#note-form label { font-weight: bold; }
+#note-input { flex: 1; }
+
+input, select, button {
+  font: inherit;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #b8c0c8;
+  border-radius: 6px;
+}
+#search-input { width: 100%; }
+
+button {
+  background: #2c3e50;
+  color: #fff;
+  border-color: #2c3e50;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover { background: #4a6580; }
+
+#error-message {
+  color: #c0392b;
+  min-height: 1.5em;
+  margin: 0.5rem 0 0;
+}
+
+#notes-list { list-style: none; padding: 0; margin: 0; }
+
+.note {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-left: 6px solid #999;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+}
+.note-text { margin: 0 0 0.5rem; overflow-wrap: anywhere; }
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+.note-label {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+}
+.note-delete { background: #c0392b; border-color: #c0392b; padding: 0.25rem 0.6rem; }
+.note-delete:hover { background: #922b21; }
+.no-results { color: #666; font-style: italic; padding: 0.5rem 0; }
+
+.category-personal { border-left-color: teal; }
+.category-work { border-left-color: darkred; }
+.category-study { border-left-color: #1e60c8; }
+
+
+@media (max-width: 600px) {
+  #note-form { flex-direction: column; align-items: stretch; }
+  .note-footer { flex-direction: column; align-items: flex-start; }
+}
