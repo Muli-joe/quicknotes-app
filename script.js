@@ -2,8 +2,27 @@ const form = document.querySelector('#note-form');
 const noteInput = document.querySelector('#note-input');
 const categorySelect = document.querySelector('#note-category');
 const notesList = document.querySelector('#notes-list');
+const errorMessage = document.querySelector('#error-message');
+const noteCount = document.querySelector('#note-count');
+
+const MAX_LENGTH = 200;
 
 let notes = [];
+
+function deleteNote(id) {
+  notes = notes.filter(function (note) { return note.id !== id; });
+  render();
+}
+
+function updateCount() {
+  if (notes.length === 0) {
+    noteCount.textContent = 'You have no notes yet.';
+  } else if (notes.length === 1) {
+    noteCount.textContent = 'You have 1 note.';
+  } else {
+    noteCount.textContent = 'You have ' + notes.length + ' notes.';
+  }
+}
 
 function render() {
   notesList.textContent = '';
@@ -31,6 +50,7 @@ function render() {
     del.type = 'button';
     del.className = 'note-delete';
     del.textContent = 'Delete';
+    del.addEventListener('click', function () { deleteNote(note.id); });
 
     footer.appendChild(info);
     footer.appendChild(del);
@@ -38,13 +58,24 @@ function render() {
     li.appendChild(footer);
     notesList.appendChild(li);
   });
+  updateCount();
 }
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
+  const text = noteInput.value.trim();
+  if (text === '') {
+    errorMessage.textContent = 'Please type a note first.';
+    return;
+  }
+  if (text.length > MAX_LENGTH) {
+    errorMessage.textContent = 'Notes must be 200 characters or fewer.';
+    return;
+  }
+  errorMessage.textContent = '';
   notes.push({
     id: Date.now(),
-    text: noteInput.value.trim(),
+    text: text,
     category: categorySelect.value,
     createdAt: new Date().toLocaleString()
   });
