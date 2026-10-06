@@ -103,6 +103,10 @@ button:hover { background: #4a6580; }
 .category-work { border-left-color: darkred; }
 .category-study { border-left-color: #1e60c8; }
 
+/* Clear all button */
+#clear-all { background: #7f8c8d; border-color: #7f8c8d; }
+#clear-all:hover { background: #566061; }
+/* end clear all */
 
 @media (max-width: 600px) {
   #note-form { flex-direction: column; align-items: stretch; }
